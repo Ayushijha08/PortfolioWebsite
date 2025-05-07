@@ -73,7 +73,7 @@ function Home() {
             <Typography variant="h6" sx={{ mb: 4 }}>
               <span style={{ color: '#00e6e6', fontWeight: 'bold' }}>
                 <Typewriter
-                  words={['Web Developer 👨‍💻', 'React Enthusiast ⚛️', 'UI/UX Designer 🎨']}
+                  words={['Mern Stack Enthusiast👨‍💻', 'React Enthusiast ⚛️', 'UI/UX Designer 🎨']}
                   loop={true}
                   cursor
                   cursorStyle="_"
