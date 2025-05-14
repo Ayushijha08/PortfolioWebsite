@@ -1,24 +1,51 @@
-import React from 'react';
-import { Container, Typography, Grid, Card, CardMedia, CardContent, CardActions, Button } from '@mui/material';
+import React, { useState } from 'react';
+import {
+  Container,
+  Typography,
+  Grid,
+  Card,
+  CardMedia,
+  CardContent,
+  CardActions,
+  Button,
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  IconButton,
+} from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 import { motion } from 'framer-motion';
 
 const projects = [
   {
     title: 'Portfolio Website',
     description: 'A personal portfolio built with React and Material-UI to showcase skills and projects.',
-    image: '/portfolio.png',
-    link: 'https://your-portfolio.vercel.app',
+    image: `${process.env.PUBLIC_URL}/portfolio.png`,
+    link: 'https://ayushijha08.github.io/PortfolioWebsite/',
   },
   {
-    title: 'To-Do App',
+    title: 'Task Manager',
     description: 'A simple and intuitive To-Do list application built using React and localStorage.',
-    image: '/todo.png',
-    link: 'https://github.com/yourusername/todo-app',
+    image: `${process.env.PUBLIC_URL}/todo.png`,
+    link: 'https://ayushijha08.github.io/TaskManager/',
   },
   // Add more projects here
 ];
 
 function Projects() {
+  const [open, setOpen] = useState(false);
+  const [selectedProject, setSelectedProject] = useState(null);
+
+  const handleImageClick = (project) => {
+    setSelectedProject(project);
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+    setSelectedProject(null);
+  };
+
   return (
     <Container id="projects" sx={{ py: 10 }}>
       <motion.div
@@ -35,16 +62,25 @@ function Projects() {
           {projects.map((project, index) => (
             <Grid item xs={12} sm={6} md={4} key={index}>
               <motion.div
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.03 }}
                 transition={{ type: 'spring', stiffness: 300 }}
               >
                 <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-                  <CardMedia
-                    component="img"
-                    height="160"
-                    image={project.image}
-                    alt={project.title}
-                  />
+                  <motion.div
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.3 }}
+                    style={{ overflow: 'hidden', cursor: 'pointer' }}
+                    onClick={() => handleImageClick(project)}
+                  >
+                    <CardMedia
+                      component="img"
+                      height="160"
+                      image={project.image}
+                      alt={project.title}
+                      sx={{ transition: 'transform 0.3s ease', width: '100%', objectFit: 'cover' }}
+                    />
+                  </motion.div>
+
                   <CardContent>
                     <Typography gutterBottom variant="h6" component="div">
                       {project.title}
@@ -64,6 +100,26 @@ function Projects() {
           ))}
         </Grid>
       </motion.div>
+
+      {/* Zoom Modal */}
+      <Dialog open={open} onClose={handleClose} maxWidth="md" fullWidth>
+        <DialogTitle sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          {selectedProject?.title}
+          <IconButton onClick={handleClose}>
+            <CloseIcon />
+          </IconButton>
+        </DialogTitle>
+        <DialogContent dividers>
+          <img
+            src={selectedProject?.image}
+            alt={selectedProject?.title}
+            style={{ width: '100%', height: 'auto', borderRadius: 8 }}
+          />
+          <Typography variant="body1" sx={{ mt: 2 }}>
+            {selectedProject?.description}
+          </Typography>
+        </DialogContent>
+      </Dialog>
     </Container>
   );
 }

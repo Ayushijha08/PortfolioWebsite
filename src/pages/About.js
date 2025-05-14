@@ -35,7 +35,7 @@ function About() {
               <Grid item xs={12} md={4}>
                 <Avatar
                   alt="Your Name"
-                  src="/profile.jpg"
+                  src={`${process.env.PUBLIC_URL}/profile.jpg`}
                   sx={{
                     width: 180,
                     height: 180,
@@ -64,32 +64,35 @@ function About() {
                 </Box>
 
                 {/* Download Resume Button */}
-                <Box sx={{ mt: 4 }}>
-                  <a
-                    href="/resume.pdf"
-                    download
-                    style={{ textDecoration: 'none' }}
-                  >
-                    <Box
-                      component="button"
-                      sx={{
-                        bgcolor: '#1976d2',
-                        color: '#fff',
-                        px: 3,
-                        py: 1,
-                        border: 'none',
-                        borderRadius: 2,
-                        cursor: 'pointer',
-                        fontWeight: 'bold',
-                        '&:hover': {
-                          bgcolor: '#1565c0',
-                        },
-                      }}
-                    >
-                      Download Resume
-                    </Box>
-                  </a>
-                </Box>
+            <Box sx={{ mt: 4 }}>
+  <a
+    href={`${process.env.PUBLIC_URL}/resume.pdf`}
+    download
+    style={{ textDecoration: 'none' }}
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <Box
+      component="button"
+      sx={{
+        bgcolor: '#1976d2',
+        color: '#fff',
+        px: 3,
+        py: 1,
+        border: 'none',
+        borderRadius: 2,
+        cursor: 'pointer',
+        fontWeight: 'bold',
+        '&:hover': {
+          bgcolor: '#1565c0',
+        },
+      }}
+    >
+      Download Resume
+    </Box>
+  </a>
+</Box>
+
               </Grid>
             </Grid>
           </Paper>

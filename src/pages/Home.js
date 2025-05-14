@@ -44,7 +44,7 @@ function Home() {
           >
             <Avatar
               alt="Ayushi Jha"
-              src="/profile.jpg"
+              src={`${process.env.PUBLIC_URL}/profile.jpg`}
               sx={{
                 width: 200,
                 height: 200,
@@ -165,8 +165,8 @@ function Home() {
               {/* Image Left */}
               <Grid item xs={12} md={5}>
                 <Avatar
-                  src="/profile.jpg"
-                  alt="Ayushi Jha"
+        src={`${process.env.PUBLIC_URL}/profile.jpg`}         
+         alt="Ayushi Jha"
                   sx={{
                     width: { xs: 200, md: 250 },
                     height: { xs: 200, md: 250 },
