@@ -29,6 +29,12 @@ const projects = [
     image: `${process.env.PUBLIC_URL}/todo.png`,
     link: 'https://ayushijha08.github.io/TaskManager/',
   },
+   {
+    title: 'Finance Tracker',
+    description: 'Finance Tracker is a simple and responsive web application built using React and Material-UI that helps users keep track of their personal income and expenses.',
+    image: `${process.env.PUBLIC_URL}/finance.png`,
+    link: 'https://Ayushijha08.github.io/financeTracker/',
+  },
   // Add more projects here
 ];
 

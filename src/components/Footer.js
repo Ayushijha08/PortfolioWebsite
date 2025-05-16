@@ -15,7 +15,7 @@ function Footer() {
     >
       <Container maxWidth="sm">
         <Typography variant="body1" align="center">
-          © {new Date().getFullYear()} Your Name. All rights reserved.
+          © {new Date().getFullYear()} Ayushi Jha. All rights reserved.
         </Typography>
       </Container>
     </Box>

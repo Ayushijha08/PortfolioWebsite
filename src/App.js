@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
-import About from './pages/About'; // ✅ Corrected import
+import About from './pages/About'; 
 import Contact from './pages/Contact';
 import Projects from './pages/Projects';
 import Navbar from './components/Navbar';
@@ -10,9 +10,9 @@ import { Box } from '@mui/material';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/PortfolioWebsite">
       <Box display="flex" flexDirection="column" minHeight="100vh">
-        <Navbar /> {/* ✅ Show on all pages */}
+        <Navbar /> {/*  Show on all pages */}
         <Box component="main" flexGrow={1}>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -21,7 +21,7 @@ function App() {
             <Route path="/projects" element={<Projects />} />
           </Routes>
         </Box>
-        <Footer /> {/* ✅ Show on all pages */}
+        <Footer /> {/*  Show on all pages */}
       </Box>
     </Router>
   );
